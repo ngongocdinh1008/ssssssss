@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+</head>
+<body>
+<h1>Edit Employee</h1>
+
+<form action="/employees/edit/{id}" method="post" th:object="${employee}">
+    <input type="hidden" id="id" name="id" th:value="${employee.id}"/>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required><br>
+
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="birthday" name="birthday" th:field="*{birthday}" required><br>
+
+    <label for="numberphone">Number Phone:</label>
+    <input type="text" id="numberphone" name="numberphone" th:field="*{numberphone}" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" required><br>
+
+    <div th:if="${#fields.hasErrors('*')}">
+        <div th:each="error : ${#fields.errors('*')}" th:text="${error}"></div>
+    </div>
+
+    <button type="submit">Update Employee</button>
+</form>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+</body>
+</html>
