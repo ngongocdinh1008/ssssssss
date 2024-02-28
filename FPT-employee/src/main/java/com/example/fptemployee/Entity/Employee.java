@@ -1,6 +1,7 @@
 package com.example.fptemployee.Entity;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ public class Employee {
     private String name;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private int numberphone;
     private String email;
