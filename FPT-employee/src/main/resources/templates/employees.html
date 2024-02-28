@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+</head>
+<body>
+<h1>Employee List</h1>
+<div style="display: flex;">
+    <form action="/search" method="get" style="margin-right: 10px;">
+        <input type="text" name="keyword" placeholder="Enter keyword">
+        <button type="submit">Search</button>
+    </form>
+    <form action="/employees/add">
+        <button type="submit">Add Employee</button>
+    </form>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Number Phone</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.birthday}"></td>
+        <td th:text="${employee.numberphone}"></td>
+        <td th:text="${employee.email}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
